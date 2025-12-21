@@ -8,25 +8,34 @@
 <style>
 :root{
   --primary:#00adb5;
-  --dark:#0f172a;
-  --light:#f8fafc;
+  --bg:#f8fafc;
   --card:#ffffff;
   --text:#1e293b;
+  --nav:#0f172a;
 }
 
+.dark{
+  --bg:#0b1220;
+  --card:#111827;
+  --text:#e5e7eb;
+  --nav:#020617;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
 body{
-  margin:0;
-  font-family: 'Segoe UI', sans-serif;
-  background:var(--light);
+  font-family:'Segoe UI',sans-serif;
+  background:var(--bg);
   color:var(--text);
+  transition:.3s;
   scroll-behavior:smooth;
 }
 
-/* NAVBAR */
+/* NAV */
 nav{
   position:sticky;
   top:0;
-  background:var(--dark);
+  background:var(--nav);
   color:white;
   padding:15px 8%;
   display:flex;
@@ -40,6 +49,14 @@ nav a{
   text-decoration:none;
   margin-left:20px;
   font-weight:500;
+}
+.toggle{
+  cursor:pointer;
+  padding:6px 14px;
+  background:white;
+  color:black;
+  border-radius:20px;
+  margin-left:20px;
 }
 
 /* HERO */
@@ -60,7 +77,7 @@ nav a{
   padding:6px 12px;
   border-radius:6px;
 }
-.hero p{font-size:1.1rem;margin:15px 0}
+.hero p{margin:15px 0;font-size:1.1rem}
 .hero a{
   display:inline-block;
   margin:8px;
@@ -81,19 +98,26 @@ section h2{
   font-size:2rem;
 }
 
-/* CARD GRID */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:25px;
 }
 
+/* CARD */
 .card{
   background:var(--card);
   padding:25px;
   border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-  transition:.3s;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  transition:.4s;
+  opacity:0;
+  transform:translateY(30px);
+}
+.card.show{
+  opacity:1;
+  transform:translateY(0);
 }
 .card:hover{
   transform:translateY(-8px);
@@ -105,26 +129,17 @@ section h2{
   padding:10px 16px;
   margin:6px;
   background:#e0f2fe;
+  color:#000;
   border-radius:20px;
   font-weight:500;
 }
 
-/* PROJECTS */
-.card a{
-  color:var(--primary);
-  text-decoration:none;
-  font-weight:600;
-}
-
 /* CONTACT */
-.contact p{
-  font-size:1.1rem;
-  margin:8px 0;
-}
+.contact p{font-size:1.1rem;margin:8px 0}
 
 /* FOOTER */
 footer{
-  background:var(--dark);
+  background:var(--nav);
   color:white;
   text-align:center;
   padding:20px;
@@ -147,6 +162,7 @@ footer{
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
+    <span class="toggle" onclick="toggleMode()">🌙</span>
   </div>
 </nav>
 
@@ -157,62 +173,82 @@ footer{
     <p>Full Stack Developer | Data Scientist</p>
     <a href="S.K.Vasudevan.pdf" download>Download Resume</a>
     <a href="https://github.com/VasudevanSk" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/sk-vasudevan-783714267" target="_blank">LinkedIn</a>
   </div>
 </div>
 
 <!-- ABOUT -->
 <section id="about">
-  <h2>About Me</h2>
-  <div class="grid">
-    <div class="card">
-      <p>
-        I am a B.Tech CSE student and Data Science Intern with strong hands-on
-        experience in Python, Django, analytics, and AI-based systems.
-        I enjoy building scalable and real-world applications.
-      </p>
-    </div>
+<h2>About Me</h2>
+<div class="grid">
+  <div class="card animate">
+    <p>
+      B.Tech CSE student and Data Science Intern with hands-on experience in
+      Python, Django, analytics, and AI-powered systems.
+      Passionate about solving real-world problems.
+    </p>
   </div>
+</div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
-  <h2>Skills</h2>
-  <div class="card">
-    <span class="skill">Python</span>
-    <span class="skill">Django</span>
-    <span class="skill">SQL</span>
-    <span class="skill">JavaScript</span>
-    <span class="skill">HTML</span>
-    <span class="skill">CSS</span>
-    <span class="skill">Data Science</span>
-    <span class="skill">AI Agents</span>
-    <span class="skill">LangChain</span>
-  </div>
+<h2>Skills</h2>
+<div class="card animate">
+  <span class="skill">Python</span>
+  <span class="skill">Django</span>
+  <span class="skill">SQL</span>
+  <span class="skill">JavaScript</span>
+  <span class="skill">HTML</span>
+  <span class="skill">CSS</span>
+  <span class="skill">Data Science</span>
+  <span class="skill">AI Agents</span>
+  <span class="skill">LangChain</span>
+</div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects">
-  <h2>Projects</h2>
-  <div class="grid" id="projects-list">
-    <div class="card">Loading projects...</div>
-  </div>
+<h2>Projects</h2>
+<div class="grid" id="projects-list">
+  <div class="card animate">Loading projects...</div>
+</div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <h2>Contact</h2>
-  <div class="card contact">
-    <p>📍 Nagari, India</p>
-    <p>📞 6302997664</p>
-    <p>✉️ vasudevansk00@gmail.com</p>
-  </div>
+<h2>Contact</h2>
+<div class="card contact animate">
+  <p>📍 Nagari, India</p>
+  <p>📞 6302997664</p>
+  <p>✉️ vasudevansk00@gmail.com</p>
+</div>
 </section>
 
-<footer>
-  © 2025 Srinivasan Kumaravasudevan
-</footer>
+<footer>© 2025 Srinivasan Kumaravasudevan</footer>
 
 <script>
+/* DARK MODE WITH MEMORY */
+function toggleMode(){
+  document.body.classList.toggle("dark");
+  localStorage.setItem("mode",
+    document.body.classList.contains("dark") ? "dark":"light");
+}
+if(localStorage.getItem("mode")==="dark"){
+  document.body.classList.add("dark");
+}
+
+/* SCROLL ANIMATION */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add("show");
+    }
+  });
+});
+document.querySelectorAll(".card").forEach(c=>observer.observe(c));
+
+/* GITHUB PROJECTS */
 fetch("https://api.github.com/users/VasudevanSk/repos")
 .then(res=>res.json())
 .then(data=>{
@@ -223,13 +259,14 @@ fetch("https://api.github.com/users/VasudevanSk/repos")
     .slice(0,6)
     .forEach(repo=>{
       let div=document.createElement("div");
-      div.className="card";
+      div.className="card animate";
       div.innerHTML=`
         <h3>${repo.name}</h3>
         <p>${repo.description || "No description available"}</p>
         <a href="${repo.html_url}" target="_blank">View on GitHub →</a>
       `;
       container.appendChild(div);
+      observer.observe(div);
     });
 });
 </script>
