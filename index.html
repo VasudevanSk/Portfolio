@@ -59,34 +59,77 @@ nav a{
   margin-left:20px;
 }
 
-/* HERO */
 .hero{
   min-height:90vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
   background:linear-gradient(135deg,#00adb5,#2563eb);
   color:white;
   padding:40px;
 }
-.hero h1{font-size:2.5rem}
-.hero span{
+
+.hero-content{
+  display:flex;
+  align-items:center;
+  gap:60px;
+  max-width:1100px;
+  width:100%;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.hero-img img{
+  width:220px;
+  height:220px;
+  object-fit:cover;
+  border-radius:50%;
+  border:6px solid white;
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+  animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+
+.hero-text{
+  text-align:left;
+  max-width:500px;
+}
+
+.hero-text h1{font-size:2.5rem}
+.hero-text span{
   background:white;
   color:black;
   padding:6px 12px;
   border-radius:6px;
 }
-.hero p{margin:15px 0;font-size:1.1rem}
-.hero a{
+
+.hero-text p{
+  margin:15px 0;
+  font-size:1.1rem;
+}
+
+.hero-text a{
   display:inline-block;
-  margin:8px;
+  margin:8px 8px 0 0;
   padding:12px 22px;
   background:black;
   color:white;
   text-decoration:none;
   border-radius:30px;
   font-weight:500;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero-content{
+    flex-direction:column;
+    text-align:center;
+  }
+  .hero-text{text-align:center}
 }
 
 /* SECTION */
@@ -166,14 +209,22 @@ footer{
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
-  <div>
-    <h1>Hi, I'm <span>Srinivasan Kumaravasudevan</span></h1>
-    <p>Full Stack Developer | Data Scientist</p>
-    <a href="S.K.Vasudevan.pdf" download>Download Resume</a>
-    <a href="https://github.com/VasudevanSk" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/sk-vasudevan-783714267" target="_blank">LinkedIn</a>
+  <div class="hero-content">
+    
+    <div class="hero-img">
+      <img src="profile.jpeg" alt="Srinivasan">
+    </div>
+
+    <div class="hero-text">
+      <h1>Hi, I'm <span>Srinivasan Kumaravasudevan</span></h1>
+      <p>Full Stack Developer | Data Scientist</p>
+
+      <a href="S.K.Vasudevan.pdf" download>Download Resume</a>
+      <a href="https://github.com/VasudevanSk" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/sk-vasudevan-783714267" target="_blank">LinkedIn</a>
+    </div>
+
   </div>
 </div>
 
