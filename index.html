@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Srinivasan | Portfolio</title>
+
+<style>
+:root{
+  --bg:#f4f6f8;
+  --text:#222;
+  --card:#fff;
+  --primary:#00adb5;
+}
+.dark{
+  --bg:#111;
+  --text:#eee;
+  --card:#1e1e1e;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial}
+body{background:var(--bg);color:var(--text);transition:.3s}
+
+/* NAV */
+nav{
+  background:#000;
+  color:#fff;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+nav h2{color:var(--primary)}
+nav ul{display:flex;list-style:none}
+nav ul li{margin-left:20px}
+nav ul li a{color:#fff;text-decoration:none}
+
+/* HERO */
+.hero{
+  height:90vh;
+  background:linear-gradient(135deg,var(--primary),#393e46);
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+.hero span{background:#fff;color:#000;padding:5px 10px;border-radius:5px}
+.hero a{
+  margin:8px;
+  padding:10px 20px;
+  background:#000;
+  color:#fff;
+  text-decoration:none;
+  border-radius:5px;
+}
+
+/* SECTIONS */
+section{padding:70px 10%}
+h2{text-align:center;color:var(--primary);margin-bottom:25px}
+.card{
+  background:var(--card);
+  padding:25px;
+  border-radius:8px;
+  box-shadow:0 8px 20px rgba(0,0,0,.1);
+  margin:15px auto;
+  max-width:900px;
+}
+
+/* SKILLS */
+.skills span{
+  display:inline-block;
+  background:var(--card);
+  padding:10px 15px;
+  margin:6px;
+  border-radius:20px;
+}
+
+/* FOOTER */
+footer{background:#000;color:#fff;text-align:center;padding:15px}
+
+/* BUTTON */
+.toggle{
+  cursor:pointer;
+  background:#fff;
+  color:#000;
+  padding:6px 12px;
+  border-radius:20px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<h2>Srinivasan</h2>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#certifications">Certifications</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<span class="toggle" onclick="toggleMode()">🌙 Dark</span>
+</nav>
+
+<div class="hero">
+<h1>Hi, I'm <span>Srinivasan Kumaravasudevan</span></h1>
+<p>Full Stack Developer | Data Scientist</p>
+<a href="S.K.Vasudevan.pdf" download>Download Resume</a>
+<a href="https://github.com/VasudevanSk" target="_blank">GitHub</a>
+<a href="https://linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a>
+</div>
+
+<section id="about">
+<h2>About Me</h2>
+<div class="card">
+<p>
+B.Tech CSE student and Data Science Intern with hands-on experience in Python,
+Django, AI agents, and analytics. Passionate about building scalable systems.
+</p>
+</div>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<div class="card skills">
+<span>Python</span><span>Django</span><span>SQL</span><span>JavaScript</span>
+<span>HTML</span><span>CSS</span><span>Data Science</span>
+<span>LangChain</span><span>AI Agents</span>
+</div>
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+<div class="card">
+<ul id="github-projects">
+<li>Loading GitHub projects...</li>
+</ul>
+</div>
+</section>
+
+<section id="certifications">
+<h2>Certifications</h2>
+<div class="card">
+<ul>
+<li>AI & Machine Learning – L&T EduTech</li>
+<li>Data Analytics – L&T EduTech</li>
+<li>Analyzing Data with R – edX</li>
+<li>Programming for Data Analytics (Python)</li>
+</ul>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<div class="card">
+<p>📍 Nagari, India</p>
+<p>📞 6302997664</p>
+<p>✉️ vasudevansk00@gmail.com</p>
+</div>
+</section>
+
+<footer>© 2025 Srinivasan Kumaravasudevan</footer>
+
+<script>
+/* DARK MODE */
+function toggleMode(){
+ document.body.classList.toggle("dark");
+}
+
+/* GITHUB PROJECT FETCH */
+fetch("https://api.github.com/users/VasudevanSk/repos")
+.then(res=>res.json())
+.then(data=>{
+ let list=document.getElementById("github-projects");
+ list.innerHTML="";
+ data
+   .sort((a,b)=> new Date(b.updated_at) - new Date(a.updated_at))
+   .slice(0,5)
+   .forEach(repo=>{
+     let li=document.createElement("li");
+     li.innerHTML=`<a href="${repo.html_url}" target="_blank">${repo.name}</a>`;
+     list.appendChild(li);
+   });
+});
+</script>
+
+</body>
+</html>
