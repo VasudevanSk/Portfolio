@@ -173,14 +173,6 @@ section h2{
   font-weight:500;
 }
 
-/* FEATURED PROJECTS */
-#featured-projects h3{color:var(--text)}
-#featured-projects a{
-  color:var(--primary);
-  font-weight:600;
-  text-decoration:none;
-}
-
 /* CONTACT */
 .contact p{font-size:1.1rem;margin:8px 0}
 
@@ -201,7 +193,7 @@ footer{
   <h2>Srinivasan</h2>
   <div>
     <a href="#about">About</a>
-    <a href="#featured-projects">Projects</a>
+    <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
     <span class="toggle" onclick="toggleMode()">🌙</span>
@@ -242,9 +234,9 @@ footer{
 </div>
 </section>
 
-<!-- FEATURED PROJECTS -->
-<section id="featured-projects">
-<h2>Featured Projects</h2>
+<!-- PROJECTS -->
+<section id="projects">
+<h2>Projects</h2>
 <div class="grid">
 
   <div class="card animate">
@@ -256,14 +248,14 @@ footer{
 
   <div class="card animate">
     <h3>Procurement Automation Agent</h3>
-    <p>AI assistant to compare vendor quotes and track procurement lifecycle.</p>
+    <p>AI assistant to compare vendor quotes and manage procurement lifecycle.</p>
     <p><strong>Tech:</strong> Python, Django, NLP, AI Agents</p>
     <a href="https://github.com/VasudevanSk" target="_blank">View Project →</a>
   </div>
 
   <div class="card animate">
     <h3>Personal Portfolio Website</h3>
-    <p>Responsive portfolio with dark mode and GitHub integration.</p>
+    <p>Responsive portfolio with dark mode and modern UI.</p>
     <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
     <a href="https://VasudevanSk.github.io/Portfolio/" target="_blank">Live Demo →</a>
   </div>
@@ -303,8 +295,10 @@ footer{
 /* DARK MODE */
 function toggleMode(){
   document.body.classList.toggle("dark");
-  localStorage.setItem("mode",
-    document.body.classList.contains("dark") ? "dark":"light");
+  localStorage.setItem(
+    "mode",
+    document.body.classList.contains("dark") ? "dark" : "light"
+  );
 }
 if(localStorage.getItem("mode")==="dark"){
   document.body.classList.add("dark");
@@ -313,7 +307,9 @@ if(localStorage.getItem("mode")==="dark"){
 /* SCROLL ANIMATION */
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.add("show")}
+    if(e.isIntersecting){
+      e.target.classList.add("show");
+    }
   });
 });
 document.querySelectorAll(".animate").forEach(c=>observer.observe(c));
