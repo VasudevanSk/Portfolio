@@ -3,231 +3,317 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Srinivasan | Full Stack Developer</title>
+<title>Srinivasan | Portfolio</title>
 
 <style>
 :root{
-  --primary:#2563eb;
+  --primary:#00adb5;
   --bg:#f8fafc;
   --card:#ffffff;
-  --text:#0f172a;
-  --muted:#475569;
+  --text:#1e293b;
+  --nav:#0f172a;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Segoe UI, sans-serif;
+.dark{
+  --bg:#0b1220;
+  --card:#111827;
+  --text:#e5e7eb;
+  --nav:#020617;
 }
+
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
+  font-family:'Segoe UI',sans-serif;
   background:var(--bg);
   color:var(--text);
+  transition:.3s;
+  scroll-behavior:smooth;
 }
 
-section{
-  padding:70px 10%;
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  background:var(--nav);
+  color:white;
+  padding:15px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:100;
 }
-
-h2{
-  text-align:center;
-  margin-bottom:40px;
-  font-size:32px;
+nav h2{color:var(--primary)}
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:500;
+}
+.toggle{
+  cursor:pointer;
+  padding:6px 14px;
+  background:white;
+  color:black;
+  border-radius:20px;
+  margin-left:20px;
 }
 
 /* HERO */
 .hero{
-  height:90vh;
+  min-height:90vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#00adb5,#2563eb);
+  padding:40px 8%;
+}
+
+.hero-content{
   display:flex;
   align-items:center;
-  justify-content:center;
-  text-align:center;
+  justify-content:space-between;
+  gap:50px;
+  max-width:1100px;
+  width:100%;
+  flex-wrap:wrap;
 }
 
-.hero h1{
-  font-size:48px;
+.hero-text{max-width:520px}
+
+.hero-text h1{
+  font-size:2.6rem;
+  color:white;
 }
 
-.hero span{
-  color:var(--primary);
+.hero-text span{
+  background:white;
+  color:black;
+  padding:6px 14px;
+  border-radius:6px;
 }
 
-.hero p{
-  margin-top:15px;
-  color:var(--muted);
-  font-size:18px;
+.hero-text p{
+  margin:18px 0;
+  font-size:1.2rem;
+  color:#e5e7eb;
 }
 
-.hero a{
+.hero-text a{
   display:inline-block;
-  margin-top:25px;
-  padding:12px 28px;
-  background:var(--primary);
+  margin:8px 8px 0 0;
+  padding:12px 24px;
+  background:black;
   color:white;
   text-decoration:none;
-  border-radius:8px;
-  font-weight:600;
+  border-radius:30px;
+  font-weight:500;
 }
 
-/* ABOUT */
-.about{
-  max-width:900px;
-  margin:auto;
+.hero-img img{
+  width:360px;
+  max-width:100%;
+  border-radius:18px;
+  box-shadow:0 30px 60px rgba(0,0,0,0.25);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero-content{
+    flex-direction:column-reverse;
+    text-align:center;
+  }
+}
+@media(max-width:600px){
+  .hero-text h1{font-size:2rem}
+}
+
+/* SECTION */
+section{padding:80px 8%}
+section h2{
   text-align:center;
-  color:var(--muted);
-  font-size:18px;
+  color:var(--primary);
+  margin-bottom:40px;
+  font-size:2rem;
 }
 
-/* PROJECTS */
-.projects-grid{
+/* GRID */
+.grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:25px;
 }
 
-.project-card{
+/* CARD */
+.card{
   background:var(--card);
   padding:25px;
   border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-  transition:0.3s;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  transition:.4s;
 }
-
-.project-card:hover{
-  transform:translateY(-6px);
+.card.animate{
+  opacity:0;
+  transform:translateY(30px);
 }
-
-.project-title{
-  font-size:20px;
-  font-weight:700;
-  margin-bottom:10px;
+.card.show{
+  opacity:1;
+  transform:translateY(0);
 }
-
-.project-desc{
-  color:var(--muted);
-  margin-bottom:15px;
-  line-height:1.5;
-}
-
-.tech{
-  font-size:14px;
-  font-weight:600;
-  margin-bottom:15px;
-}
-
-.project-card a{
-  text-decoration:none;
-  color:var(--primary);
-  font-weight:600;
-}
+.card:hover{transform:translateY(-8px)}
 
 /* SKILLS */
-.skills{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:20px;
-  text-align:center;
+.skill{
+  display:inline-block;
+  padding:10px 16px;
+  margin:6px;
+  background:#e0f2fe;
+  color:#000;
+  border-radius:20px;
+  font-weight:500;
 }
 
-.skill{
-  background:var(--card);
-  padding:18px;
-  border-radius:12px;
-  font-weight:600;
-}
+/* CONTACT */
+.contact p{font-size:1.1rem;margin:8px 0}
 
 /* FOOTER */
 footer{
+  background:var(--nav);
+  color:white;
   text-align:center;
   padding:20px;
-  color:var(--muted);
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
+<!-- NAV -->
+<nav>
+  <h2>Srinivasan</h2>
   <div>
-    <h1>Hi, I'm <span>Srinivasan</span></h1>
-    <p>Full Stack Developer | Data Science Enthusiast</p>
-    <a href="https://www.linkedin.com/in/sk-vasudevan-783714267" target="_blank">
-      Connect on LinkedIn
-    </a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+    <span class="toggle" onclick="toggleMode()">🌙</span>
   </div>
-</section>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+
+    <div class="hero-text">
+      <h1>Hi, I'm <span>Srinivasan Kumaravasudevan</span></h1>
+      <p>Full Stack Developer | Data Scientist</p>
+
+      <a href="S.K.Vasudevan.pdf" download>Download Resume</a>
+      <a href="https://github.com/VasudevanSk" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/sk-vasudevan-783714267" target="_blank">LinkedIn</a>
+    </div>
+
+    <div class="hero-img">
+      <img src="hero.jpeg" alt="Developer Illustration">
+    </div>
+
+  </div>
+</div>
 
 <!-- ABOUT -->
-<section>
-  <h2>About Me</h2>
-  <p class="about">
-    I am a Computer Science student passionate about Full Stack Development
-    and Data Science. I enjoy building real-world applications using Python,
-    Django, and modern web technologies. I am constantly learning and
-    improving my problem-solving skills.
-  </p>
+<section id="about">
+<h2>About Me</h2>
+<div class="grid">
+  <div class="card animate">
+    <p>
+      B.Tech CSE student and Data Science Intern with hands-on experience in
+      Python, Django, analytics, and AI-powered systems.
+      Passionate about solving real-world problems.
+    </p>
+  </div>
+</div>
 </section>
 
 <!-- PROJECTS -->
-<section>
-  <h2>Projects</h2>
+<section id="projects">
+<h2>Projects</h2>
+<div class="grid">
 
-  <div class="projects-grid">
-
-    <div class="project-card">
-      <div class="project-title">AI-Driven Mobile Usage Analytics</div>
-      <div class="project-desc">
-        A data-driven system to analyze mobile usage patterns and user behavior
-        using machine learning techniques.
-      </div>
-      <div class="tech">Python • Pandas • Machine Learning • SQL</div>
-      <a href="https://github.com/VasudevanSk" target="_blank">View on GitHub →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-title">Procurement Automation Agent</div>
-      <div class="project-desc">
-        Intelligent procurement assistant for vendor comparison, purchase
-        optimization, and delivery tracking.
-      </div>
-      <div class="tech">Python • Django • NLP • AI Agents</div>
-      <a href="https://github.com/VasudevanSk" target="_blank">View on GitHub →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-title">Personal Portfolio Website</div>
-      <div class="project-desc">
-        A responsive personal portfolio website designed to showcase projects,
-        skills, and professional profile.
-      </div>
-      <div class="tech">HTML • CSS • JavaScript</div>
-      <a href="https://VasudevanSk.github.io/Portfolio/" target="_blank">
-        Live Demo →
-      </a>
-    </div>
-
+  <div class="card animate">
+    <h3>AI-Driven Mobile Usage & User Behaviour Analytics</h3>
+    <p>Analyzed mobile usage patterns using ML models and data pipelines.</p>
+    <p><strong>Tech:</strong> Python, Pandas, ML, SQL</p>
+    <a href="project-ai.html">View Case Study →</a>
   </div>
+
+  <div class="card animate">
+    <h3>Procurement Automation Agent</h3>
+    <p>AI assistant to compare vendor quotes and manage procurement lifecycle.</p>
+    <p><strong>Tech:</strong> Python, Django, NLP, AI Agents</p>
+    <a href="https://github.com/VasudevanSk" target="_blank">View Project →</a>
+  </div>
+
+  <div class="card animate">
+    <h3>Personal Portfolio Website</h3>
+    <p>Responsive portfolio with dark mode and modern UI.</p>
+    <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+    <a href="https://VasudevanSk.github.io/Portfolio/" target="_blank">Live Demo →</a>
+  </div>
+
+</div>
 </section>
 
 <!-- SKILLS -->
-<section>
-  <h2>Skills</h2>
-  <div class="skills">
-    <div class="skill">Python</div>
-    <div class="skill">Django</div>
-    <div class="skill">SQL</div>
-    <div class="skill">HTML & CSS</div>
-    <div class="skill">JavaScript</div>
-    <div class="skill">Machine Learning</div>
-    <div class="skill">Git & GitHub</div>
-  </div>
+<section id="skills">
+<h2>Skills</h2>
+<div class="card animate">
+  <span class="skill">Python</span>
+  <span class="skill">Django</span>
+  <span class="skill">SQL</span>
+  <span class="skill">JavaScript</span>
+  <span class="skill">HTML</span>
+  <span class="skill">CSS</span>
+  <span class="skill">Data Science</span>
+  <span class="skill">AI Agents</span>
+  <span class="skill">LangChain</span>
+</div>
 </section>
 
-<footer>
-  © 2025 Srinivasan • Built with ❤️
-</footer>
+<!-- CONTACT -->
+<section id="contact">
+<h2>Contact</h2>
+<div class="card contact animate">
+  <p>📍 Nagari, India</p>
+  <p>📞 6302997664</p>
+  <p>✉️ vasudevansk00@gmail.com</p>
+</div>
+</section>
+
+<footer>© 2025 Srinivasan Kumaravasudevan</footer>
+
+<script>
+/* DARK MODE */
+function toggleMode(){
+  document.body.classList.toggle("dark");
+  localStorage.setItem(
+    "mode",
+    document.body.classList.contains("dark") ? "dark" : "light"
+  );
+}
+if(localStorage.getItem("mode")==="dark"){
+  document.body.classList.add("dark");
+}
+
+/* SCROLL ANIMATION */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add("show");
+    }
+  });
+});
+document.querySelectorAll(".animate").forEach(c=>observer.observe(c));
+</script>
 
 </body>
 </html>
