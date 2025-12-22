@@ -21,7 +21,11 @@
   --nav:#020617;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 body{
   font-family:'Segoe UI',sans-serif;
@@ -32,165 +36,241 @@ body{
   padding-bottom:60px;
 }
 
-
-/* NAV */
+/* ---------------- NAV ---------------- */
 nav{
   position:sticky;
   top:0;
   background:var(--nav);
   color:white;
-  padding:15px 8%;
+  padding:14px 8%;
   display:flex;
   justify-content:space-between;
   align-items:center;
   z-index:100;
 }
-nav h2{color:var(--primary)}
+
+nav h2{
+  color:var(--primary);
+}
+
 nav a{
   color:white;
   text-decoration:none;
-  margin-left:20px;
+  margin-left:18px;
   font-weight:500;
 }
+
 .toggle{
   cursor:pointer;
   padding:6px 14px;
   background:white;
   color:black;
   border-radius:20px;
-  margin-left:20px;
+  margin-left:16px;
 }
 
-/* HERO */
+/* Mobile nav */
+@media(max-width:600px){
+  nav{
+    flex-direction:column;
+    gap:10px;
+    padding:12px 6%;
+  }
+
+  nav a{
+    margin:0 8px;
+    font-size:0.9rem;
+  }
+}
+
+/* ---------------- HERO ---------------- */
 .hero{
   min-height:90vh;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   background:linear-gradient(135deg,#00adb5,#2563eb);
-  padding:40px 8%;
+  padding:60px 8%;
 }
 
 .hero-content{
+  max-width:1100px;
+  width:100%;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:50px;
-  max-width:1100px;
-  width:100%;
   flex-wrap:wrap;
 }
 
-.hero-text{max-width:520px}
-
-.hero-text h1{
-  font-size:2.6rem;
-  color:white;
+.hero-text{
+  max-width:520px;
 }
 
-.hero-text span{
-  background:white;
-  color:black;
-  padding:6px 14px;
-  border-radius:6px;
+.hero-text h1{
+  color:white;
+  font-size:2.4rem;
+}
+
+.hero-text .name{
+  font-size:2.4rem;
+  font-weight:700;
+  color:white;
+  margin-top:6px;
 }
 
 .hero-text p{
-  margin:18px 0;
-  font-size:1.2rem;
+  margin:16px 0;
+  font-size:1.15rem;
   color:#e5e7eb;
 }
 
 .hero-text a{
   display:inline-block;
   margin:8px 8px 0 0;
-  padding:12px 24px;
+  padding:12px 22px;
   background:black;
   color:white;
   text-decoration:none;
-  border-radius:30px;
+  border-radius:26px;
   font-weight:500;
 }
 
 .hero-img img{
-  width:360px;
+  width:340px;
   max-width:100%;
   border-radius:18px;
-  box-shadow:0 30px 60px rgba(0,0,0,0.25);
+  box-shadow:0 30px 60px rgba(0,0,0,.25);
 }
 
-/* MOBILE */
+/* Mobile hero */
 @media(max-width:768px){
+  .hero{
+    min-height:auto;
+    padding:70px 6% 50px;
+  }
+
   .hero-content{
     flex-direction:column-reverse;
     text-align:center;
+    gap:24px;
+  }
+
+  .hero-text h1{
+    font-size:1.6rem;
+  }
+
+  .hero-text .name{
+    font-size:1.7rem;
+    line-height:1.2;
+  }
+
+  .hero-text p{
+    font-size:1rem;
+  }
+
+  .hero-img img{
+    width:230px;
+  }
+
+  .hero-text a{
+    font-size:0.9rem;
+    padding:10px 18px;
   }
 }
-@media(max-width:600px){
-  .hero-text h1{font-size:2rem}
+
+/* ---------------- SECTION ---------------- */
+section{
+  padding:80px 8%;
 }
 
-/* SECTION */
-section{padding:80px 8%}
 section h2{
   text-align:center;
   color:var(--primary);
-  margin-bottom:40px;
+  margin-bottom:36px;
   font-size:2rem;
 }
 
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:25px;
+@media(max-width:600px){
+  section{
+    padding:60px 6%;
+  }
+
+  section h2{
+    font-size:1.5rem;
+  }
 }
 
-/* CARD */
+/* ---------------- GRID & CARD ---------------- */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;
+}
+
 .card{
   background:var(--card);
-  padding:25px;
+  padding:22px;
   border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
   transition:.4s;
 }
+
 .card.animate{
   opacity:0;
   transform:translateY(30px);
 }
+
 .card.show{
   opacity:1;
   transform:translateY(0);
 }
-.card:hover{transform:translateY(-8px)}
 
-/* SKILLS */
+.card:hover{
+  transform:translateY(-6px);
+}
+
+/* ---------------- SKILLS ---------------- */
 .skill{
   display:inline-block;
-  padding:10px 16px;
-  margin:6px;
+  padding:8px 14px;
+  margin:6px 4px;
   background:#e0f2fe;
   color:#000;
-  border-radius:20px;
+  border-radius:18px;
+  font-size:0.85rem;
   font-weight:500;
 }
 
-/* CONTACT */
-.contact p{font-size:1.1rem;margin:8px 0}
+/* ---------------- CONTACT ---------------- */
+.contact p{
+  margin:8px 0;
+  font-size:1.05rem;
+}
 
-/* FOOTER */
+/* ---------------- FOOTER ---------------- */
 footer{
   position:fixed;
   bottom:0;
   left:0;
   width:100%;
-  text-align:center;
-  padding:15px;
   background:#000408;
   color:#f4f5f7;
-  border-top:1px solid #e2e8f0;
+  text-align:center;
+  padding:14px;
+  border-top:1px solid #1e293b;
 }
 
+/* Disable fixed footer on mobile */
+@media(max-width:600px){
+  footer{
+    position:static;
+  }
+
+  body{
+    padding-bottom:0;
+  }
+}
 </style>
 </head>
 
@@ -211,9 +291,9 @@ footer{
 <!-- HERO -->
 <div class="hero">
   <div class="hero-content">
-
     <div class="hero-text">
-      <h1>Hi, I'm <span>Srinivasan Kumaravasudevan</span></h1>
+      <h1>Hi, I'm</h1>
+      <div class="name">Srinivasan Kumaravasudevan</div>
       <p>Full Stack Developer | Data Scientist</p>
 
       <a href="S.K.Vasudevan.pdf" download>Download Resume</a>
@@ -222,105 +302,103 @@ footer{
     </div>
 
     <div class="hero-img">
-      <img src="hero.jpeg" alt="Developer Illustration">
+      <img src="hero.jpeg" alt="Developer illustration">
     </div>
-
   </div>
 </div>
 
 <!-- ABOUT -->
 <section id="about">
-<h2>About Me</h2>
-<div class="grid">
-  <div class="card animate">
-    <p>
-      B.Tech CSE student and Data Science Intern with hands-on experience in
-      Python, Django, analytics, and AI-powered systems.
-      Passionate about solving real-world problems.
-    </p>
+  <h2>About Me</h2>
+  <div class="grid">
+    <div class="card animate">
+      <p>
+        B.Tech CSE student and Data Science Intern with hands-on experience in
+        Python, Django, analytics, and AI-powered systems. Passionate about
+        solving real-world problems using technology.
+      </p>
+    </div>
   </div>
-</div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects">
-<h2>Projects</h2>
-<div class="grid">
+  <h2>Projects</h2>
+  <div class="grid">
 
-  <div class="card animate">
-    <h3>AI-Driven Mobile Usage & User Behaviour Analytics</h3>
-    <p>Analyzed mobile usage patterns using ML models and data pipelines.</p>
-    <p><strong>Tech:</strong> Python, Pandas, ML, SQL</p>
-    <a href="project-ai.html">View Case Study →</a>
+    <div class="card animate">
+      <h3>AI-Driven Mobile Usage Analytics</h3>
+      <p>Analyzed mobile usage patterns using ML models and structured pipelines.</p>
+      <p><strong>Tech:</strong> Python, Pandas, ML, SQL</p>
+      <a href="project-ai.html">View Case Study →</a>
+    </div>
+
+    <div class="card animate">
+      <h3>Procurement Automation Agent</h3>
+      <p>AI assistant for vendor comparison, decision making, and tracking.</p>
+      <p><strong>Tech:</strong> Python, Django, NLP, AI Agents</p>
+      <a href="https://github.com/VasudevanSk" target="_blank">View Project →</a>
+    </div>
+
+    <div class="card animate">
+      <h3>Personal Portfolio Website</h3>
+      <p>Modern responsive portfolio with dark mode and animations.</p>
+      <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+      <a href="https://VasudevanSk.github.io/Portfolio/" target="_blank">Live Demo →</a>
+    </div>
+
   </div>
-
-  <div class="card animate">
-    <h3>Procurement Automation Agent</h3>
-    <p>AI assistant to compare vendor quotes and manage procurement lifecycle.</p>
-    <p><strong>Tech:</strong> Python, Django, NLP, AI Agents</p>
-    <a href="https://github.com/VasudevanSk" target="_blank">View Project →</a>
-  </div>
-
-  <div class="card animate">
-    <h3>Personal Portfolio Website</h3>
-    <p>Responsive portfolio with dark mode and modern UI.</p>
-    <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
-    <a href="https://VasudevanSk.github.io/Portfolio/" target="_blank">Live Demo →</a>
-  </div>
-
-</div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
-<h2>Skills</h2>
-<div class="card animate">
-  <span class="skill">Python</span>
-  <span class="skill">Django</span>
-  <span class="skill">SQL</span>
-  <span class="skill">JavaScript</span>
-  <span class="skill">HTML</span>
-  <span class="skill">CSS</span>
-  <span class="skill">Data Science</span>
-  <span class="skill">AI Agents</span>
-  <span class="skill">LangChain</span>
-</div>
+  <h2>Skills</h2>
+  <div class="card animate">
+    <span class="skill">Python</span>
+    <span class="skill">Django</span>
+    <span class="skill">SQL</span>
+    <span class="skill">JavaScript</span>
+    <span class="skill">HTML</span>
+    <span class="skill">CSS</span>
+    <span class="skill">Data Science</span>
+    <span class="skill">AI Agents</span>
+    <span class="skill">LangChain</span>
+  </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-<h2>Contact</h2>
-<div class="card contact animate">
-  <p>📍 Nagari, India</p>
-  <p>📞 6302997664</p>
-  <p>✉️ vasudevansk00@gmail.com</p>
-</div>
+  <h2>Contact</h2>
+  <div class="card contact animate">
+    <p>📍 Nagari, India</p>
+    <p>📞 6302997664</p>
+    <p>✉️ vasudevansk00@gmail.com</p>
+  </div>
 </section>
 
 <footer>© 2025 Srinivasan Kumaravasudevan</footer>
 
 <script>
-/* DARK MODE */
+/* Dark mode */
 function toggleMode(){
   document.body.classList.toggle("dark");
-  localStorage.setItem(
-    "mode",
-    document.body.classList.contains("dark") ? "dark" : "light"
-  );
+  localStorage.setItem("mode",
+    document.body.classList.contains("dark") ? "dark" : "light");
 }
 if(localStorage.getItem("mode")==="dark"){
   document.body.classList.add("dark");
 }
 
-/* SCROLL ANIMATION */
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add("show");
+/* Scroll animation */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
     }
   });
 });
-document.querySelectorAll(".animate").forEach(c=>observer.observe(c));
+
+document.querySelectorAll(".animate").forEach(el=>observer.observe(el));
 </script>
 
 </body>
