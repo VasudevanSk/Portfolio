@@ -59,6 +59,16 @@ nav a{
   margin-left:20px;
 }
 
+/* HERO */
+.hero{
+  min-height:90vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#00adb5,#2563eb);
+  padding:40px 8%;
+}
+
 .hero-content{
   display:flex;
   align-items:center;
@@ -67,6 +77,39 @@ nav a{
   max-width:1100px;
   width:100%;
   flex-wrap:wrap;
+}
+
+.hero-text{
+  max-width:520px;
+}
+
+.hero-text h1{
+  font-size:2.6rem;
+  color:white;
+}
+
+.hero-text span{
+  background:white;
+  color:black;
+  padding:6px 14px;
+  border-radius:6px;
+}
+
+.hero-text p{
+  margin:18px 0;
+  font-size:1.2rem;
+  color:#e5e7eb;
+}
+
+.hero-text a{
+  display:inline-block;
+  margin:8px 8px 0 0;
+  padding:12px 24px;
+  background:black;
+  color:white;
+  text-decoration:none;
+  border-radius:30px;
+  font-weight:500;
 }
 
 .hero-img img{
@@ -81,11 +124,17 @@ nav a{
   transform:translateY(-10px);
 }
 
-/* MOBILE */
+/* MOBILE HERO */
 @media(max-width:768px){
   .hero-content{
     flex-direction:column-reverse;
     text-align:center;
+  }
+}
+
+@media(max-width:600px){
+  .hero-text h1{
+    font-size:2rem;
   }
 }
 
@@ -144,11 +193,6 @@ footer{
   text-align:center;
   padding:20px;
 }
-
-/* RESPONSIVE */
-@media(max-width:600px){
-  .hero h1{font-size:2rem}
-}
 </style>
 </head>
 
@@ -186,12 +230,11 @@ footer{
   </div>
 </div>
 
-
 <!-- ABOUT -->
 <section id="about">
 <h2>About Me</h2>
 <div class="grid">
-  <div class="card animate">
+  <div class="card">
     <p>
       B.Tech CSE student and Data Science Intern with hands-on experience in
       Python, Django, analytics, and AI-powered systems.
@@ -204,7 +247,7 @@ footer{
 <!-- SKILLS -->
 <section id="skills">
 <h2>Skills</h2>
-<div class="card animate">
+<div class="card">
   <span class="skill">Python</span>
   <span class="skill">Django</span>
   <span class="skill">SQL</span>
@@ -221,14 +264,14 @@ footer{
 <section id="projects">
 <h2>Projects</h2>
 <div class="grid" id="projects-list">
-  <div class="card animate">Loading projects...</div>
+  <div class="card">Loading projects...</div>
 </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
 <h2>Contact</h2>
-<div class="card contact animate">
+<div class="card contact">
   <p>📍 Nagari, India</p>
   <p>📞 6302997664</p>
   <p>✉️ vasudevansk00@gmail.com</p>
@@ -238,7 +281,7 @@ footer{
 <footer>© 2025 Srinivasan Kumaravasudevan</footer>
 
 <script>
-/* DARK MODE WITH MEMORY */
+/* DARK MODE */
 function toggleMode(){
   document.body.classList.toggle("dark");
   localStorage.setItem("mode",
@@ -269,7 +312,7 @@ fetch("https://api.github.com/users/VasudevanSk/repos")
     .slice(0,6)
     .forEach(repo=>{
       let div=document.createElement("div");
-      div.className="card animate";
+      div.className="card";
       div.innerHTML=`
         <h3>${repo.name}</h3>
         <p>${repo.description || "No description available"}</p>
